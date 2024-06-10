@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bday App by Aparna</title>
+	<style>
+		*{
+			font-size: 40px;
+			font-family:'Courier New', Courier, monospace;
+		}
+	body {
+		background-color:lemonchiffon;
+		align-items: center;
+		margin:0;
+	}
+	h1{
+		margin-bottom: 20px;
+	}
+	.btn{ 
+		width:80%;
+		max-width: 200px;
+		height:50px ;
+		font-size: 1em;
+		margin:20px;
+		background-color: rgb(248, 239, 158);
+		cursor: pointer;
+	}
+	h2{
+		font-size: 30px;
+		background-color: rgb(253, 250, 228);
+		width:80%;
+		padding: 10px;
+		min-height:200px ;
+		height: 80%;
+		max-width: 800px;
+		margin: 20px;
+	}
+	</style>
+</head>
+
+<body>
+<center>
+	<br>
+	<h1>BIRTHDAY LIST APP</h1>
+	<form onsubmit = "operations()">
+	<input type = "submit" value="Add" class="btn"/>
+	<input type= "submit" value="Remove" class="btn"/>
+	<input type= "submit" value="Show" class="btn"/>
+	<h2 id="msg"></h2>
+	</form>
+	
+</center>
+<script>
+	let names = ["akansha","sakshi"];
+	function operations()
+	{
+		
+	event.preventDefault();
+	let msg = document.getElementById("msg");
+	let ele = document.activeElement.value;
+	
+	if (ele == "Add"){
+		let n = prompt("Enter Name to be Added : ")
+		if (n.trim() ==""){
+			alert("Name cannot be blank ");
+			msg.innerHTML = names.join(", ");
+		}
+		 else if (n.trim()!="")
+		{
+			names.push(n.trim());
+			msg.innerHTML = names.join(", ");
+		}
+	}
+
+	else if (ele == "Remove"){
+		let n = prompt("Enter Name to be Removed : ")
+		if (n.trim() ==""){
+			alert(" you did not enter any name ");
+			msg.innerHTML = names.join(", ");
+		}
+		else if (n!="")
+		{
+			let pos =names.indexOf(n.trim());
+			if (pos == -1)	alert(n.trim() + " not found ");
+			else{
+				names.splice(pos, 1);
+				alert(n.trim() + " removed");
+			}
+			msg.innerHTML = names.join(", ");
+		}
+
+	}
+
+	else if ( ele == "Show"){
+		msg.innerHTML = names.join(", ");
+	}
+}
+</script>
+</body>
+</html>
